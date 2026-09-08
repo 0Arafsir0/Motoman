@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
-const Sale = require("../models/sale");
-const Product = require("../models/product");
+const Sale = require("../models/Sale");
+const Product = require("../models/Product");
 
 
 // Generate invoice number

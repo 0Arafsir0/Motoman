@@ -1,6 +1,6 @@
-const Product = require("../models/product");
+const Product = require("../models/Product");
 const Brand = require("../models/Brand");
-const Category = require("../models/category");
+const Category = require("../models/Category");
 
 
 // Add a new product

@@ -1,7 +1,7 @@
-const Product = require("../models/product");
+const Product = require("../models/Product");
 const Brand = require("../models/Brand");
-const Category = require("../models/category");
-const Sale = require("../models/sale");
+const Category = require("../models/Category");
+const Sale = require("../models/Sale");
 
 const getDashboard = async (req, res) => {
     try {
