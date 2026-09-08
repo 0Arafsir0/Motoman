@@ -9,7 +9,10 @@ import {
     FaShoppingCart,
     FaChevronDown,
     FaSignOutAlt,
-    FaBars
+    FaBars,
+    FaBoxes,
+    FaChartBar,
+    FaMoneyBillWave
 } from "react-icons/fa";
 
 import { useAuth } from "../context/AuthContext";
@@ -84,6 +87,21 @@ const MainLayout = () => {
                     >
                         <FaTachometerAlt />
                         Dashboard
+                    </NavLink>
+
+                    {/* Stock */}
+                    <NavLink
+                        to="/stock"
+                        className={({ isActive }) =>
+                            `flex items-center gap-3 rounded-lg px-3 py-2 ${
+                                isActive
+                                    ? "bg-blue-50 text-blue-600"
+                                    : "text-gray-700 hover:bg-gray-100"
+                            }`
+                        }
+                    >
+                        <FaBoxes />
+                        <span>Stock</span>
                     </NavLink>
 
                     {/* Brand */}
@@ -270,6 +288,98 @@ const MainLayout = () => {
                                     Sales History
                                 </NavLink>
 
+                            </div>
+                        )}
+                    </div>
+
+                    {/* Expenses */}
+                    
+                    <div>
+                        <button
+                            onClick={() =>
+                                setOpenMenu(
+                                    openMenu === "expenses"
+                                        ? null
+                                        : "expenses"
+                                )
+                            }
+                            className="w-full flex items-center justify-between px-4 py-3 rounded-lg hover:bg-gray-100"
+                        >
+                            <span className="flex items-center gap-3">
+                                <FaMoneyBillWave />
+                                Expense
+                            </span>
+
+                            <FaChevronDown
+                                className={`transition-transform ${
+                                    openMenu === "expenses"
+                                        ? "rotate-180"
+                                        : ""
+                                }`}
+                            />
+                        </button>
+
+                        {openMenu === "expenses" && (
+                            <div className="ml-8 mt-1 space-y-1">
+                                <NavLink
+                                    to="/expenses/add"
+                                    className="block px-3 py-2 rounded-lg text-sm hover:bg-gray-100"
+                                >
+                                    Add Expense
+                                </NavLink>
+
+                                <NavLink
+                                    to="/expenses"
+                                    className="block px-3 py-2 rounded-lg text-sm hover:bg-gray-100"
+                                >
+                                    Manage Expense
+                                </NavLink>
+                            </div>
+                        )}
+                    </div>
+
+                    {/*Reports*/}
+
+                    <div>
+                        <button
+                            onClick={() =>
+                                setOpenMenu(
+                                    openMenu === "reports"
+                                        ? null
+                                        : "reports"
+                                )
+                            }
+                            className="w-full flex items-center justify-between px-4 py-3 rounded-lg hover:bg-gray-100"
+                        >
+                            <span className="flex items-center gap-3">
+                                <FaChartBar />
+                                Reports
+                            </span>
+
+                            <FaChevronDown
+                                className={`transition-transform ${
+                                    openMenu === "reports"
+                                        ? "rotate-180"
+                                        : ""
+                                }`}
+                            />
+                        </button>
+
+                        {openMenu === "reports" && (
+                            <div className="ml-8 mt-1 space-y-1">
+                                <NavLink
+                                    to="/reports/sales"
+                                    className="block px-3 py-2 rounded-lg text-sm hover:bg-gray-100"
+                                >
+                                    Sales Report
+                                </NavLink>
+
+                                <NavLink
+                                    to="/reports/profit"
+                                    className="block px-3 py-2 rounded-lg text-sm hover:bg-gray-100"
+                                >
+                                    Profit Report
+                                </NavLink>
                             </div>
                         )}
                     </div>

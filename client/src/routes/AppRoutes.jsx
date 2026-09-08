@@ -9,8 +9,9 @@ import { useAuth } from "../context/AuthContext";
 
 import Login from "../pages/Login";
 import Dashboard from "../pages/Dashboard";
-
 import MainLayout from "../layouts/MainLayout";
+
+import Stock from "../pages/stock/Stock";
 
 import AddBrand from "../pages/brands/AddBrand";
 import ManageBrands from "../pages/brands/ManageBrands";
@@ -23,6 +24,12 @@ import ManageProducts from "../pages/products/ManageProducts";
 
 import NewSale from "../pages/sales/NewSale";
 import SalesHistory from "../pages/sales/SalesHistory";
+
+import SalesReport from "../pages/reports/SalesReport";
+import ProfitReport from "../pages/reports/ProfitReport";
+
+import AddExpense from "../pages/expenses/AddExpense";
+import ManageExpenses from "../pages/expenses/ManageExpenses";
 
 
 const ProtectedRoute = ({ children }) => {
@@ -39,6 +46,7 @@ const ProtectedRoute = ({ children }) => {
 const AppRoutes = () => {
     return (
         <BrowserRouter>
+
             <Routes>
 
                 {/* Login */}
@@ -46,6 +54,7 @@ const AppRoutes = () => {
                     path="/login"
                     element={<Login />}
                 />
+
 
                 {/* Protected Application */}
                 <Route
@@ -56,11 +65,20 @@ const AppRoutes = () => {
                         </ProtectedRoute>
                     }
                 >
+
                     {/* Dashboard */}
                     <Route
                         index
                         element={<Dashboard />}
                     />
+
+
+                    {/* Stock */}
+                    <Route
+                        path="stock"
+                        element={<Stock />}
+                    />
+
 
                     {/* Brand */}
                     <Route
@@ -73,6 +91,7 @@ const AppRoutes = () => {
                         element={<ManageBrands />}
                     />
 
+
                     {/* Category */}
                     <Route
                         path="categories/add"
@@ -83,6 +102,7 @@ const AppRoutes = () => {
                         path="categories"
                         element={<ManageCategories />}
                     />
+
 
                     {/* Product */}
                     <Route
@@ -95,18 +115,44 @@ const AppRoutes = () => {
                         element={<ManageProducts />}
                     />
 
-                    {/* Sales */}
-                    <Route
-                        path="sales"
-                        element={<SalesHistory />}
-                    />
 
+                    {/* Sales */}
                     <Route
                         path="sales/new"
                         element={<NewSale />}
                     />
 
+                    <Route
+                        path="sales"
+                        element={<SalesHistory />}
+                    />
+
+
+                    {/* Reports */}
+                    <Route
+                        path="reports/sales"
+                        element={<SalesReport />}
+                    />
+
+                    <Route
+                        path="reports/profit"
+                        element={<ProfitReport />}
+                    />
+
+
+                    {/* Expenses */}
+                    <Route
+                        path="expenses/add"
+                        element={<AddExpense />}
+                    />
+
+                    <Route
+                        path="expenses"
+                        element={<ManageExpenses />}
+                    />
+
                 </Route>
+
 
                 {/* Unknown URL */}
                 <Route
@@ -115,6 +161,7 @@ const AppRoutes = () => {
                 />
 
             </Routes>
+
         </BrowserRouter>
     );
 };

@@ -128,6 +128,7 @@ const createSale = async (req, res) => {
                 productName: product.name,
                 quantity: item.quantity,
                 unitPrice: product.sellingPrice,
+                purchasePrice: product.purchasePrice,
                 total: itemTotal
             });
 

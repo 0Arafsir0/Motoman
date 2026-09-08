@@ -51,7 +51,7 @@ const productSchema = new mongoose.Schema(
             min: 0,
             default: 0
         },
-        
+
         currentStock: {
             type: Number,
             required: true,
@@ -94,4 +94,5 @@ const productSchema = new mongoose.Schema(
     }
 );
 
-module.exports = mongoose.model("Product", productSchema);
+module.exports =
+    mongoose.models.Product || mongoose.model("Product", productSchema);

@@ -10,6 +10,8 @@ const productRoutes = require("./routes/productRoutes");
 const saleRoutes = require("./routes/saleRoutes");
 const protect = require("./middleware/authMiddleware");
 const dashboardRoutes = require("./routes/dashboardRoutes");
+const expenseRoutes = require("./routes/expenseRoutes");
+const reportRoutes = require("./routes/reportRoutes");
 
 dotenv.config();
 
@@ -33,7 +35,8 @@ app.use("/api/categories", protect, categoryRoutes);
 app.use("/api/products", protect, productRoutes);
 app.use("/api/sales", protect, saleRoutes);
 app.use("/api/dashboard", protect, dashboardRoutes);
-
+app.use("/api/expenses", protect, expenseRoutes);
+app.use("/api/reports", protect, reportRoutes);
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {

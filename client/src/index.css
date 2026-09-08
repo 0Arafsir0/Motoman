@@ -16,3 +16,50 @@ body {
     background: #f5f7fb;
     color: #1f2937;
 }
+
+@media print {
+    body {
+        background: white !important;
+    }
+
+    .sidebar,
+    .app-header,
+    .no-print {
+        display: none !important;
+    }
+
+    main {
+        margin: 0 !important;
+        width: 100% !important;
+    }
+
+    .sales-report-page,
+    .profit-report-page {
+        width: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    .print-header {
+        display: block !important;
+    }
+
+    table {
+        width: 100% !important;
+        border-collapse: collapse !important;
+    }
+
+    th,
+    td {
+        border: 1px solid #000 !important;
+        padding: 8px !important;
+    }
+
+    .shadow-sm {
+        box-shadow: none !important;
+    }
+
+    @page {
+        margin: 15mm;
+    }
+}

@@ -26,6 +26,12 @@ const saleItemSchema = new mongoose.Schema(
             min: 0
         },
 
+        purchasePrice: {
+            type: Number,
+            required: true,
+            min: 0
+        },
+
         total: {
             type: Number,
             required: true,
@@ -36,7 +42,6 @@ const saleItemSchema = new mongoose.Schema(
         _id: false
     }
 );
-
 
 const saleSchema = new mongoose.Schema(
     {
@@ -116,5 +121,5 @@ const saleSchema = new mongoose.Schema(
     }
 );
 
-
-module.exports = mongoose.model("Sale", saleSchema);
+module.exports =
+    mongoose.models.Sale || mongoose.model("Sale", saleSchema);
