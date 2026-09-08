@@ -25,9 +25,7 @@ const MainLayout = () => {
     const navigate = useNavigate();
 
     const toggleMenu = (menu) => {
-        setOpenMenu(
-            openMenu === menu ? null : menu
-        );
+        setOpenMenu(openMenu === menu ? null : menu);
     };
 
     const handleLogout = () => {
@@ -35,12 +33,17 @@ const MainLayout = () => {
         navigate("/login");
     };
 
+    // Standard styling for all main and submenu links
     const navLinkClass = ({ isActive }) =>
         `flex items-center gap-3 rounded-lg px-4 py-3 text-sm font-medium transition ${
             isActive
                 ? "bg-blue-600 text-white"
                 : "text-gray-600 hover:bg-gray-100 hover:text-gray-900"
         }`;
+
+    // Standard styling for dropdown menu buttons
+    const menuButtonClass =
+        "flex w-full items-center justify-between rounded-lg px-4 py-3 text-sm font-medium text-gray-600 transition hover:bg-gray-100 hover:text-gray-900";
 
     return (
         <div className="min-h-screen bg-gray-100">
@@ -86,35 +89,31 @@ const MainLayout = () => {
                         onClick={() => setSidebarOpen(false)}
                     >
                         <FaTachometerAlt />
-                        Dashboard
+                        <span>Dashboard</span>
                     </NavLink>
 
                     {/* Stock */}
-                    <NavLink
-                        to="/stock"
-                        className={({ isActive }) =>
-                            `flex items-center gap-3 rounded-lg px-3 py-2 ${
-                                isActive
-                                    ? "bg-blue-50 text-blue-600"
-                                    : "text-gray-700 hover:bg-gray-100"
-                            }`
-                        }
-                    >
-                        <FaBoxes />
-                        <span>Stock</span>
-                    </NavLink>
+                    <div className="mt-2">
+                        <NavLink
+                            to="/stock"
+                            className={navLinkClass}
+                            onClick={() => setSidebarOpen(false)}
+                        >
+                            <FaBoxes />
+                            <span>Stock</span>
+                        </NavLink>
+                    </div>
 
                     {/* Brand */}
                     <div className="mt-2">
-
                         <button
                             type="button"
                             onClick={() => toggleMenu("brand")}
-                            className="flex w-full items-center justify-between rounded-lg px-4 py-3 text-sm font-medium text-gray-600 transition hover:bg-gray-100 hover:text-gray-900"
+                            className={menuButtonClass}
                         >
                             <span className="flex items-center gap-3">
                                 <FaTags />
-                                Brand
+                                <span>Brand</span>
                             </span>
 
                             <FaChevronDown
@@ -128,7 +127,6 @@ const MainLayout = () => {
 
                         {openMenu === "brand" && (
                             <div className="ml-10 mt-1 space-y-1">
-
                                 <NavLink
                                     to="/brands/add"
                                     className={navLinkClass}
@@ -145,23 +143,20 @@ const MainLayout = () => {
                                 >
                                     Manage Brands
                                 </NavLink>
-
                             </div>
                         )}
-
                     </div>
 
                     {/* Category */}
                     <div className="mt-2">
-
                         <button
                             type="button"
                             onClick={() => toggleMenu("category")}
-                            className="flex w-full items-center justify-between rounded-lg px-4 py-3 text-sm font-medium text-gray-600 transition hover:bg-gray-100 hover:text-gray-900"
+                            className={menuButtonClass}
                         >
                             <span className="flex items-center gap-3">
                                 <FaLayerGroup />
-                                Category
+                                <span>Category</span>
                             </span>
 
                             <FaChevronDown
@@ -175,7 +170,6 @@ const MainLayout = () => {
 
                         {openMenu === "category" && (
                             <div className="ml-10 mt-1 space-y-1">
-
                                 <NavLink
                                     to="/categories/add"
                                     className={navLinkClass}
@@ -192,23 +186,20 @@ const MainLayout = () => {
                                 >
                                     Manage Categories
                                 </NavLink>
-
                             </div>
                         )}
-
                     </div>
 
                     {/* Product */}
                     <div className="mt-2">
-
                         <button
                             type="button"
                             onClick={() => toggleMenu("product")}
-                            className="flex w-full items-center justify-between rounded-lg px-4 py-3 text-sm font-medium text-gray-600 transition hover:bg-gray-100 hover:text-gray-900"
+                            className={menuButtonClass}
                         >
                             <span className="flex items-center gap-3">
                                 <FaBox />
-                                Product
+                                <span>Product</span>
                             </span>
 
                             <FaChevronDown
@@ -222,7 +213,6 @@ const MainLayout = () => {
 
                         {openMenu === "product" && (
                             <div className="ml-10 mt-1 space-y-1">
-
                                 <NavLink
                                     to="/products/add"
                                     className={navLinkClass}
@@ -239,27 +229,20 @@ const MainLayout = () => {
                                 >
                                     Manage Products
                                 </NavLink>
-
                             </div>
                         )}
-
                     </div>
 
                     {/* Sales */}
-                    <div>
+                    <div className="mt-2">
                         <button
-                            onClick={() =>
-                                setOpenMenu(
-                                    openMenu === "sales"
-                                        ? null
-                                        : "sales"
-                                )
-                            }
-                            className="flex w-full items-center justify-between rounded-lg px-3 py-2 text-gray-700 hover:bg-gray-100"
+                            type="button"
+                            onClick={() => toggleMenu("sales")}
+                            className={menuButtonClass}
                         >
                             <span className="flex items-center gap-3">
                                 <FaShoppingCart />
-                                Sales
+                                <span>Sales</span>
                             </span>
 
                             <FaChevronDown
@@ -272,46 +255,41 @@ const MainLayout = () => {
                         </button>
 
                         {openMenu === "sales" && (
-                            <div className="ml-8 mt-1 space-y-1">
-
+                            <div className="ml-10 mt-1 space-y-1">
                                 <NavLink
                                     to="/sales/new"
-                                    className="block rounded-lg px-3 py-2 text-sm text-gray-600 hover:bg-gray-100"
+                                    className={navLinkClass}
+                                    onClick={() => setSidebarOpen(false)}
                                 >
                                     New Sale
                                 </NavLink>
 
                                 <NavLink
                                     to="/sales"
-                                    className="block rounded-lg px-3 py-2 text-sm text-gray-600 hover:bg-gray-100"
+                                    end
+                                    className={navLinkClass}
+                                    onClick={() => setSidebarOpen(false)}
                                 >
                                     Sales History
                                 </NavLink>
-
                             </div>
                         )}
                     </div>
 
-                    {/* Expenses */}
-                    
-                    <div>
+                    {/* Expense */}
+                    <div className="mt-2">
                         <button
-                            onClick={() =>
-                                setOpenMenu(
-                                    openMenu === "expenses"
-                                        ? null
-                                        : "expenses"
-                                )
-                            }
-                            className="w-full flex items-center justify-between px-4 py-3 rounded-lg hover:bg-gray-100"
+                            type="button"
+                            onClick={() => toggleMenu("expenses")}
+                            className={menuButtonClass}
                         >
                             <span className="flex items-center gap-3">
                                 <FaMoneyBillWave />
-                                Expense
+                                <span>Expense</span>
                             </span>
 
                             <FaChevronDown
-                                className={`transition-transform ${
+                                className={`text-xs transition-transform ${
                                     openMenu === "expenses"
                                         ? "rotate-180"
                                         : ""
@@ -320,17 +298,20 @@ const MainLayout = () => {
                         </button>
 
                         {openMenu === "expenses" && (
-                            <div className="ml-8 mt-1 space-y-1">
+                            <div className="ml-10 mt-1 space-y-1">
                                 <NavLink
                                     to="/expenses/add"
-                                    className="block px-3 py-2 rounded-lg text-sm hover:bg-gray-100"
+                                    className={navLinkClass}
+                                    onClick={() => setSidebarOpen(false)}
                                 >
                                     Add Expense
                                 </NavLink>
 
                                 <NavLink
                                     to="/expenses"
-                                    className="block px-3 py-2 rounded-lg text-sm hover:bg-gray-100"
+                                    end
+                                    className={navLinkClass}
+                                    onClick={() => setSidebarOpen(false)}
                                 >
                                     Manage Expense
                                 </NavLink>
@@ -338,26 +319,20 @@ const MainLayout = () => {
                         )}
                     </div>
 
-                    {/*Reports*/}
-
-                    <div>
+                    {/* Reports */}
+                    <div className="mt-2">
                         <button
-                            onClick={() =>
-                                setOpenMenu(
-                                    openMenu === "reports"
-                                        ? null
-                                        : "reports"
-                                )
-                            }
-                            className="w-full flex items-center justify-between px-4 py-3 rounded-lg hover:bg-gray-100"
+                            type="button"
+                            onClick={() => toggleMenu("reports")}
+                            className={menuButtonClass}
                         >
                             <span className="flex items-center gap-3">
                                 <FaChartBar />
-                                Reports
+                                <span>Reports</span>
                             </span>
 
                             <FaChevronDown
-                                className={`transition-transform ${
+                                className={`text-xs transition-transform ${
                                     openMenu === "reports"
                                         ? "rotate-180"
                                         : ""
@@ -366,17 +341,19 @@ const MainLayout = () => {
                         </button>
 
                         {openMenu === "reports" && (
-                            <div className="ml-8 mt-1 space-y-1">
+                            <div className="ml-10 mt-1 space-y-1">
                                 <NavLink
                                     to="/reports/sales"
-                                    className="block px-3 py-2 rounded-lg text-sm hover:bg-gray-100"
+                                    className={navLinkClass}
+                                    onClick={() => setSidebarOpen(false)}
                                 >
                                     Sales Report
                                 </NavLink>
 
                                 <NavLink
                                     to="/reports/profit"
-                                    className="block px-3 py-2 rounded-lg text-sm hover:bg-gray-100"
+                                    className={navLinkClass}
+                                    onClick={() => setSidebarOpen(false)}
                                 >
                                     Profit Report
                                 </NavLink>
@@ -388,16 +365,14 @@ const MainLayout = () => {
 
                 {/* Logout */}
                 <div className="border-t border-gray-200 p-4">
-
                     <button
                         type="button"
                         onClick={handleLogout}
                         className="flex w-full items-center gap-3 rounded-lg px-4 py-3 text-sm font-medium text-gray-600 transition hover:bg-red-50 hover:text-red-600"
                     >
                         <FaSignOutAlt />
-                        Logout
+                        <span>Logout</span>
                     </button>
-
                 </div>
 
             </aside>
@@ -408,6 +383,7 @@ const MainLayout = () => {
                 {/* Header */}
                 <header className="sticky top-0 z-20 flex h-20 items-center justify-between border-b border-gray-200 bg-white px-4 shadow-sm sm:px-6">
 
+                    {/* Mobile menu button */}
                     <button
                         type="button"
                         onClick={() => setSidebarOpen(true)}
@@ -416,6 +392,7 @@ const MainLayout = () => {
                         <FaBars />
                     </button>
 
+                    {/* Page title */}
                     <div className="hidden lg:block">
                         <h2 className="text-xl font-semibold text-gray-800">
                             MotoMan Dashboard
@@ -435,7 +412,7 @@ const MainLayout = () => {
                             </p>
                         </div>
 
-                        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-100 font-semibold text-blue-600">
+                        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-100 text-sm font-semibold text-blue-600">
                             {(user?.username || "A")
                                 .charAt(0)
                                 .toUpperCase()}
