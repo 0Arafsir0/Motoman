@@ -1,7 +1,7 @@
+
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-
 import { useAuth } from "../context/AuthContext";
 
 const Login = () => {
@@ -28,7 +28,6 @@ const Login = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
         setError("");
 
         if (!formData.username || !formData.password) {
@@ -47,7 +46,6 @@ const Login = () => {
             const { token, user } = response.data;
 
             login(user, token);
-
             navigate("/");
         } catch (error) {
             if (error.response) {
@@ -56,9 +54,7 @@ const Login = () => {
                     "Login failed."
                 );
             } else {
-                setError(
-                    "Unable to connect to the server."
-                );
+                setError("Unable to connect to the server.");
             }
         } finally {
             setLoading(false);
@@ -67,7 +63,6 @@ const Login = () => {
 
     return (
         <div className="min-h-screen bg-gray-100 flex items-center justify-center px-4">
-
             <div className="w-full max-w-md">
 
                 {/* Login Card */}
@@ -75,7 +70,6 @@ const Login = () => {
 
                     {/* Header */}
                     <div className="text-center mb-8">
-
                         <h1 className="text-3xl font-bold text-gray-800">
                             MotoMan
                         </h1>
@@ -83,7 +77,6 @@ const Login = () => {
                         <p className="mt-2 text-gray-500">
                             Motorcycle Shop Management System
                         </p>
-
                     </div>
 
                     {/* Error */}
@@ -98,7 +91,6 @@ const Login = () => {
 
                         {/* Username */}
                         <div className="mb-5">
-
                             <label
                                 htmlFor="username"
                                 className="block text-sm font-medium text-gray-700 mb-2"
@@ -115,12 +107,10 @@ const Login = () => {
                                 placeholder="Enter username"
                                 className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
                             />
-
                         </div>
 
                         {/* Password */}
                         <div className="mb-5">
-
                             <label
                                 htmlFor="password"
                                 className="block text-sm font-medium text-gray-700 mb-2"
@@ -137,12 +127,10 @@ const Login = () => {
                                 placeholder="Enter password"
                                 className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
                             />
-
                         </div>
 
                         {/* Remember Me */}
                         <div className="flex items-center mb-6">
-
                             <input
                                 id="rememberMe"
                                 type="checkbox"
@@ -159,7 +147,6 @@ const Login = () => {
                             >
                                 Remember me
                             </label>
-
                         </div>
 
                         {/* Login Button */}
@@ -171,8 +158,28 @@ const Login = () => {
                             {loading ? "Logging in..." : "Login"}
                         </button>
 
-                    </form>
+                        {/* Demo / Judging Credentials */}
+                        <div className="mt-4 rounded-lg border border-blue-100 bg-blue-50 px-4 py-3 text-center">
+                            <p className="text-sm font-semibold text-blue-700">
+                                Demo Credentials
+                            </p>
 
+                            <p className="mt-1 text-xs text-gray-600">
+                                Username:{" "}
+                                <span className="font-medium text-gray-800">
+                                    admin
+                                </span>
+                            </p>
+
+                            <p className="text-xs text-gray-600">
+                                Password:{" "}
+                                <span className="font-medium text-gray-800">
+                                    123456
+                                </span>
+                            </p>
+                        </div>
+
+                    </form>
                 </div>
 
                 {/* Footer */}
@@ -181,9 +188,9 @@ const Login = () => {
                 </p>
 
             </div>
-
         </div>
     );
 };
 
 export default Login;
+
