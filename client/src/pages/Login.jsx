@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -79,14 +78,14 @@ const Login = () => {
                         </p>
                     </div>
 
-                    {/* Error */}
+                    {/* Error Message */}
                     {error && (
                         <div className="mb-5 rounded-lg bg-red-50 border border-red-200 px-4 py-3 text-sm text-red-600">
                             {error}
                         </div>
                     )}
 
-                    {/* Form */}
+                    {/* Login Form */}
                     <form onSubmit={handleSubmit}>
 
                         {/* Username */}
@@ -158,7 +157,7 @@ const Login = () => {
                             {loading ? "Logging in..." : "Login"}
                         </button>
 
-                        {/* Demo / Judging Credentials */}
+                        {/* Demo Credentials */}
                         <div className="mt-4 rounded-lg border border-blue-100 bg-blue-50 px-4 py-3 text-center">
                             <p className="text-sm font-semibold text-blue-700">
                                 Demo Credentials
@@ -174,7 +173,7 @@ const Login = () => {
                             <p className="text-xs text-gray-600">
                                 Password:{" "}
                                 <span className="font-medium text-gray-800">
-                                    123456
+                                    admin123
                                 </span>
                             </p>
                         </div>
